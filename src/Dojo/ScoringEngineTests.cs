@@ -161,6 +161,11 @@ namespace Dojo
                     if (_scoreCounter.PointsB - _scoreCounter.PointsA == 2)
                     {
                         return "PlayerB wins";
+                    } 
+                    
+                    if (_scoreCounter.PointsA - _scoreCounter.PointsB == 2)
+                    {
+                        return "PlayerA wins";
                     }
                 }
 
