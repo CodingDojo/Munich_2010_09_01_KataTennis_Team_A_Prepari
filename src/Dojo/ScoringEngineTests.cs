@@ -49,6 +49,17 @@ namespace Dojo
 
             Assert.AreEqual("love-fifteen", score);
         }
+
+        [Test]
+        public void GivenPlayerAHasThreePointsAndPlayerBHasThreePoints_ReturnsDeuce()
+        {
+            var scoreCounter = new ScoreStub(3, 3);
+            var scoringEngine = new ScoringEngine(scoreCounter);
+
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual("deuce", score);
+        }
     }
 
     public class ScoringEngine
