@@ -131,6 +131,11 @@ namespace Dojo
                     {
                         return "Advantage PlayerA";
                     }
+
+                    if (_scoreCounter.PointsB - _scoreCounter.PointsA == 1)
+                    {
+                        return "Advantage PlayerB";
+                    }
                 }
 
                 string scorePhraseA = GetScorePhrase(_scoreCounter.PointsA);
