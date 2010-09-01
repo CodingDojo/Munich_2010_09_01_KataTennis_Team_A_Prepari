@@ -1,8 +1,8 @@
 ﻿namespace Dojo
 {
-    public class ScoreCounterFake : IScoreCounter
+    public class ScoreStub : IScore
     {
-        public ScoreCounterFake(int pointsA, int pointsB)
+        public ScoreStub(int pointsA, int pointsB)
         {
             PointsA = pointsA;
             PointsB = pointsB;

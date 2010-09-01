@@ -8,7 +8,7 @@ namespace Dojo
         [Test]
         public void GivenANewlyCreatedScoureCounter_PlayerAHasZeroPoints()
         {
-            var scoreCounter = new ScoreCounter();
+            var scoreCounter = new Score();
 
             Assert.AreEqual(0, scoreCounter.PointsA);
         }
@@ -16,7 +16,7 @@ namespace Dojo
         [Test]
         public void GivenANewlyCreatedScoureCounter_PlayerBHasZeroPoints()
         {
-            var scoreCounter = new ScoreCounter();
+            var scoreCounter = new Score();
 
             Assert.AreEqual(0, scoreCounter.PointsB);
         }
@@ -24,7 +24,7 @@ namespace Dojo
         [Test]
         public void GivenANewlyCreatedScoreCounter_AndPlayerAScores_PlayerAHasOnePoint()
         {
-            var scoreCounter = new ScoreCounter();
+            var scoreCounter = new Score();
 
             scoreCounter.ScoreA();
 
@@ -34,7 +34,7 @@ namespace Dojo
         [Test]
         public void GivenANewlyCreatedScoreCounter_AndPlayerBScores_PlayerBHasOnePoint()
         {
-            var scoreCounter = new ScoreCounter();
+            var scoreCounter = new Score();
 
             scoreCounter.ScoreB();
 
@@ -44,7 +44,7 @@ namespace Dojo
         [Test]
         public void GivenAScoreCounterWherePlayerAHasOnePoint_AndPlayerAScores_PlayerAHasTwoPoints()
         {
-            var scoreCounter = new ScoreCounter();
+            var scoreCounter = new Score();
             scoreCounter.ScoreA();
 
             scoreCounter.ScoreA();
@@ -55,7 +55,7 @@ namespace Dojo
         [Test]
         public void GivenAScoreCounterWherePlayerBHasOnePoint_AndPlayerBScores_PlayerBHasTwoPoints()
         {
-            var scoreCounter = new ScoreCounter();
+            var scoreCounter = new Score();
             scoreCounter.ScoreB();
 
             scoreCounter.ScoreB();

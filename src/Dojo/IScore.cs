@@ -1,6 +1,6 @@
 namespace Dojo
 {
-    public interface IScoreCounter
+    public interface IScore
     {
         int PointsA { get; }
         int PointsB { get; }

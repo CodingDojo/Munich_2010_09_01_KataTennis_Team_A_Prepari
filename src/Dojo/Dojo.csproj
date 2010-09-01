@@ -42,11 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IScoreCounter.cs" />
-    <Compile Include="ScoreCounterFake.cs" />
+    <Compile Include="IScore.cs" />
+    <Compile Include="ScoreStub.cs" />
     <Compile Include="ScoringEngineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScoreCounter.cs" />
+    <Compile Include="Score.cs" />
     <Compile Include="ScoreCounterTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

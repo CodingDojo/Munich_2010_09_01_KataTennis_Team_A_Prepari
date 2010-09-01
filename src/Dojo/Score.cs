@@ -2,7 +2,7 @@ using System;
 
 namespace Dojo
 {
-    public class ScoreCounter : IScoreCounter
+    public class Score : IScore
     {
         public int PointsA { get; private set; }
 
