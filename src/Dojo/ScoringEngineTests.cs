@@ -111,7 +111,7 @@ namespace Dojo
         {
             get
             {
-                if (_scoreCounter.PointsA == 4 && _scoreCounter.PointsB == 3)
+                if (_scoreCounter.PointsA - _scoreCounter.PointsB ==1 && _scoreCounter.PointsB >= 3)
                 {
                     return "Advantage PlayerA";
                 }
