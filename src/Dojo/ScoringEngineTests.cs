@@ -73,6 +73,8 @@ namespace Dojo
         {
             switch (points)
             {
+                case 0:
+                    return "love";
                 case 1:
                     return "fifteen";
                 case 2:
