@@ -75,6 +75,11 @@ namespace Dojo
         {
             get
             {
+                if (_scoreCounter.PointsA == 3 && _scoreCounter.PointsB == 3)
+                {
+                    return "deuce";
+                }
+
                 string scorePhraseA = GetScorePhrase(_scoreCounter.PointsA);
                 string scorePhraseB = GetScorePhrase(_scoreCounter.PointsB);
                 return scorePhraseA + "-" + scorePhraseB;
