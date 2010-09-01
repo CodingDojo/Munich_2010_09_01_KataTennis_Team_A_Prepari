@@ -14,7 +14,7 @@ namespace Dojo
 
             string score = scoringEngine.Score;
 
-            Assert.AreEqual(score, "fifteen-love");
+            Assert.AreEqual("fifteen-love", score);
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace Dojo
 
             string score = scoringEngine.Score;
 
-            Assert.AreEqual(score, "thirty-love");
+            Assert.AreEqual("thirty-love", score);
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace Dojo
 
             string score = scoringEngine.Score;
 
-            Assert.AreEqual(score, "fourty-love");
+            Assert.AreEqual("fourty-love", score);
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace Dojo
 
             string score = scoringEngine.Score;
 
-            Assert.AreEqual(score, "love-fifteen");
+            Assert.AreEqual("love-fifteen", score);
         }
     }
 
