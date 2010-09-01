@@ -11,12 +11,12 @@ namespace Dojo
 
         public void ScoreA()
         {
-            PointsA++;
+            PointsA = 1;
         }
 
         public void ScoreB()
         {
-            PointsB++;
+            PointsB = 1;
         }
     }
 
