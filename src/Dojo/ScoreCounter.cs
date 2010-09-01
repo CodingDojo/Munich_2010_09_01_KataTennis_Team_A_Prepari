@@ -11,7 +11,7 @@ namespace Dojo
 
         public void ScoreA()
         {
-            PointsA = 1;
+            PointsA++;
         }
 
         public void ScoreB()
@@ -68,6 +68,17 @@ namespace Dojo
             scoreCounter.ScoreA();
 
             Assert.AreEqual(2, scoreCounter.PointsA);
+        }
+
+        [Test]
+        public void GivenAScoreCounterWherePlayerBHasOnePoint_AndPlayerBScores_PlayerBHasTwoPoints()
+        {
+            var scoreCounter = new ScoreCounter();
+            scoreCounter.ScoreB();
+
+            scoreCounter.ScoreB();
+
+            Assert.AreEqual(2, scoreCounter.PointsB);
         }
     }
 }
