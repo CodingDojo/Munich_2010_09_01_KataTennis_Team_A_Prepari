@@ -8,23 +8,12 @@ namespace Dojo
         [Test]
         public void GivenPlayerAHasOnePointAndPlayerBHasZeroPoints_ReturnsFifteenLove()
         {
-            var scoreCounter = new ScoreStub(1,0);
+            var scoreCounter = new ScoreStub(1, 0);
             var scoringEngine = new ScoringEngine(scoreCounter);
 
             string score = scoringEngine.Score;
 
             Assert.AreEqual(score, "fifteen-love");
-        }
-
-        [Test]
-        public void GivenPlayerAHasTwoPointsAndPlayerBHasZeroPoints_ReturnsThirtyLove()
-        {
-            var scoreCounter = new ScoreStub(2, 0);
-            var scoringEngine = new ScoringEngine(scoreCounter);
-
-            string score = scoringEngine.Score;
-
-            Assert.AreEqual(score, "thirty-love");
         }
 
         [Test]
@@ -36,6 +25,17 @@ namespace Dojo
             string score = scoringEngine.Score;
 
             Assert.AreEqual(score, "fourty-love");
+        }
+
+        [Test]
+        public void GivenPlayerAHasTwoPointsAndPlayerBHasZeroPoints_ReturnsThirtyLove()
+        {
+            var scoreCounter = new ScoreStub(2, 0);
+            var scoringEngine = new ScoringEngine(scoreCounter);
+
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual(score, "thirty-love");
         }
     }
 
@@ -50,12 +50,15 @@ namespace Dojo
 
         public string Score
         {
-            get {
+            get
+            {
                 if (_score.PointsA == 1)
                     return "fifteen-love";
-                else
+                else if (_score.PointsA == 2)
                     return "thirty-love";
-                }
+                else
+                    return "fourty-love";
+            }
         }
     }
 }
