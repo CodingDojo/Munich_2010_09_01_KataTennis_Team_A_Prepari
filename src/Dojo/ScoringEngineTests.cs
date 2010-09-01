@@ -17,6 +17,17 @@ namespace Dojo
         }
 
         [Test]
+        public void GivenPlayerAHasTwoPointsAndPlayerBHasZeroPoints_ReturnsThirtyLove()
+        {
+            var scoreCounter = new ScoreStub(2, 0);
+            var scoringEngine = new ScoringEngine(scoreCounter);
+
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual(score, "thirty-love");
+        }
+
+        [Test]
         public void GivenPlayerAHasThreePointsAndPlayerBHasZeroPoints_ReturnsFourtyLove()
         {
             var scoreCounter = new ScoreStub(3, 0);
@@ -28,31 +39,31 @@ namespace Dojo
         }
 
         [Test]
-        public void GivenPlayerAHasTwoPointsAndPlayerBHasZeroPoints_ReturnsThirtyLove()
+        public void GivenPlayerAHasZeroPointsAndPlayerBHasOnePoints_ReturnsLoveFifteen()
         {
-            var scoreCounter = new ScoreStub(2, 0);
+            var scoreCounter = new ScoreStub(0, 1);
             var scoringEngine = new ScoringEngine(scoreCounter);
 
             string score = scoringEngine.Score;
 
-            Assert.AreEqual(score, "thirty-love");
+            Assert.AreEqual(score, "love-fifteen");
         }
     }
 
     public class ScoringEngine
     {
-        private readonly IScore _score;
+        private readonly IScore _scoreCounter;
 
-        public ScoringEngine(IScore score)
+        public ScoringEngine(IScore scoreCounter)
         {
-            _score = score;
+            _scoreCounter = scoreCounter;
         }
 
         public string Score
         {
             get
             {
-                string scorePhraseA = GetScorePhrase(_score.PointsA);
+                string scorePhraseA = GetScorePhrase(_scoreCounter.PointsA);
                 return scorePhraseA + "-love";
             }
         }
@@ -65,9 +76,11 @@ namespace Dojo
                     return "fifteen";
                 case 2:
                     return "thirty";
-                default:
+                case 3:
                     return "fourty";
             }
+
+            return null;
         }
     }
 }
