@@ -60,6 +60,17 @@ namespace Dojo
 
             Assert.AreEqual("deuce", score);
         }
+
+        [Test]
+        public void GivenPlayerAHasFourPointsAndPlayerBHasFourPoints_ReturnsDeuce()
+        {
+            var scoreCounter = new ScoreStub(4, 4);
+            var scoringEngine = new ScoringEngine(scoreCounter);
+
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual("deuce", score);
+        }
     }
 
     public class ScoringEngine
