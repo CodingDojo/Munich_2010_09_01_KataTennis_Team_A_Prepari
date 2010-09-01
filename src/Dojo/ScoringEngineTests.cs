@@ -1,4 +1,3 @@
-using System;
 using NUnit.Framework;
 
 namespace Dojo
@@ -9,11 +8,10 @@ namespace Dojo
         [Test]
         public void GivenPlayerAHasOnePointAndPlayerBHasZeroPoints_ReturnsFifteenLove()
         {
-            var scoreCounter = new ScoreCounter();
-            scoreCounter.ScoreA();
+            var scoreCounter = new ScoreCounterFake(1,0);
             var scoringEngine = new ScoringEngine(scoreCounter);
 
-            var score = scoringEngine.Score;
+            string score = scoringEngine.Score;
 
             Assert.AreEqual(score, "fifteen love");
         }
@@ -21,7 +19,7 @@ namespace Dojo
 
     public class ScoringEngine
     {
-        public ScoringEngine(ScoreCounter scoreCounter)
+        public ScoringEngine(IScoreCounter scoreCounter)
         {
         }
 
@@ -29,5 +27,18 @@ namespace Dojo
         {
             get { return "fifteen love"; }
         }
+    }
+
+    public class ScoreCounterFake : IScoreCounter
+    {
+        public ScoreCounterFake(int pointsA, int pointsB)
+        {
+            PointsA = pointsA;
+            PointsB = pointsB;
+        }
+
+        public int PointsA { get; private set; }
+
+        public int PointsB { get; private set; }
     }
 }
