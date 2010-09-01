@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="IScore.cs" />
     <Compile Include="ScoreStub.cs" />
+    <Compile Include="ScoringEngine.cs" />
     <Compile Include="ScoringEngineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreCounter.cs" />
