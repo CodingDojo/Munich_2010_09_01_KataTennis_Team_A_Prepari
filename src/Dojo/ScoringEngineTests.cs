@@ -65,7 +65,8 @@ namespace Dojo
             get
             {
                 string scorePhraseA = GetScorePhrase(_scoreCounter.PointsA);
-                return scorePhraseA + "-love";
+                string scorePhraseB = GetScorePhrase(_scoreCounter.PointsB);
+                return scorePhraseA + "-" + scorePhraseB;
             }
         }
 
