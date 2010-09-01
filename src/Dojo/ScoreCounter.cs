@@ -11,6 +11,7 @@ namespace Dojo
     [TestFixture]
     public class ScoreCounterTests
     {
+        [Test]
         public void GivenANewlyCreatedScoureCounter_PlayerAHasZeroPoints()
         {
             var scoreCounter = new ScoreCounter();
