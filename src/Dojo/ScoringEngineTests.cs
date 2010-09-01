@@ -52,12 +52,21 @@ namespace Dojo
         {
             get
             {
-                if (_score.PointsA == 1)
-                    return "fifteen-love";
-                else if (_score.PointsA == 2)
-                    return "thirty-love";
-                else
-                    return "fourty-love";
+                string scorePhraseA = GetScorePhrase(_score.PointsA);
+                return scorePhraseA + "-love";
+            }
+        }
+
+        private string GetScorePhrase(int points)
+        {
+            switch (points)
+            {
+                case 1:
+                    return "fifteen";
+                case 2:
+                    return "thirty";
+                default:
+                    return "fourty";
             }
         }
     }
