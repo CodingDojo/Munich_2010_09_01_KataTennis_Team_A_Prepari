@@ -18,6 +18,17 @@ namespace Dojo
         }
 
         [Test]
+        public void GivenPlayerAHasFourPointsAndPlayerBHasFivePoints_ReturnsAdvantagePlayerB()
+        {
+            var scoreCounter = new ScoreStub(4, 5);
+            var scoringEngine = new ScoringEngine(scoreCounter);
+
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual("Advantage PlayerB", score);
+        }
+
+        [Test]
         public void GivenPlayerAHasFourPointsAndPlayerBHasFourPoints_ReturnsDeuce()
         {
             var scoreCounter = new ScoreStub(4, 4);
@@ -93,6 +104,7 @@ namespace Dojo
 
             Assert.AreEqual("love-fifteen", score);
         }
+
     }
 
     public class ScoringEngine
