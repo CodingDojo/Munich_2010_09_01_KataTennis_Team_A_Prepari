@@ -30,26 +30,21 @@ namespace Dojo
 
     public class ScoringEngine
     {
+        private readonly IScoreCounter _scoreCounter;
+
         public ScoringEngine(IScoreCounter scoreCounter)
         {
+            _scoreCounter = scoreCounter;
         }
 
         public string Score
         {
-            get { return "fifteen-love"; }
+            get {
+                if (_scoreCounter.PointsA == 1)
+                    return "fifteen-love";
+                else
+                    return "thirty-love";
+                }
         }
-    }
-
-    public class ScoreCounterFake : IScoreCounter
-    {
-        public ScoreCounterFake(int pointsA, int pointsB)
-        {
-            PointsA = pointsA;
-            PointsB = pointsB;
-        }
-
-        public int PointsA { get; private set; }
-
-        public int PointsB { get; private set; }
     }
 }
