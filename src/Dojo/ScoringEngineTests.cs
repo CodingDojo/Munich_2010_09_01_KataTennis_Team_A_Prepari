@@ -85,6 +85,17 @@ namespace Dojo
 
             Assert.AreEqual("Advantage PlayerA", score);
         }
+
+        [Test]
+        public void GivenPlayerAHasFivePointsAndPlayerBHasFourPoints_ReturnsAdvantagePlayerA()
+        {
+            var scoreCounter = new ScoreStub(5, 4);
+            var scoringEngine = new ScoringEngine(scoreCounter);
+
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual("Advantage PlayerA", score);
+        }
     }
 
     public class ScoringEngine
