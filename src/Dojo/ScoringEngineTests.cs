@@ -6,7 +6,38 @@ namespace Dojo
     [TestFixture]
     public class ScoringEngineTests
     {
+        [Test]
+        public void GivenPlayerAHasFivePointsAndPlayerBHasFourPoints_ReturnsAdvantagePlayerA()
+        {
+            var scoreCounter = new ScoreStub(5, 4);
+            var scoringEngine = new ScoringEngine(scoreCounter);
 
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual("Advantage PlayerA", score);
+        }
+
+        [Test]
+        public void GivenPlayerAHasFourPointsAndPlayerBHasFourPoints_ReturnsDeuce()
+        {
+            var scoreCounter = new ScoreStub(4, 4);
+            var scoringEngine = new ScoringEngine(scoreCounter);
+
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual("deuce", score);
+        }
+
+        [Test]
+        public void GivenPlayerAHasFourPointsAndPlayerBHasThreePoints_ReturnsAdvantagePlayerA()
+        {
+            var scoreCounter = new ScoreStub(4, 3);
+            var scoringEngine = new ScoringEngine(scoreCounter);
+
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual("Advantage PlayerA", score);
+        }
 
         [Test]
         public void GivenPlayerAHasOnePointAndPlayerBHasZeroPoints_ReturnsFifteenLove()
@@ -17,6 +48,17 @@ namespace Dojo
             string score = scoringEngine.Score;
 
             Assert.AreEqual("fifteen-love", score);
+        }
+
+        [Test]
+        public void GivenPlayerAHasThreePointsAndPlayerBHasThreePoints_ReturnsDeuce()
+        {
+            var scoreCounter = new ScoreStub(3, 3);
+            var scoringEngine = new ScoringEngine(scoreCounter);
+
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual("deuce", score);
         }
 
         [Test]
@@ -51,51 +93,6 @@ namespace Dojo
 
             Assert.AreEqual("love-fifteen", score);
         }
-
-
-        [Test]
-        public void GivenPlayerAHasThreePointsAndPlayerBHasThreePoints_ReturnsDeuce()
-        {
-            var scoreCounter = new ScoreStub(3, 3);
-            var scoringEngine = new ScoringEngine(scoreCounter);
-
-            string score = scoringEngine.Score;
-
-            Assert.AreEqual("deuce", score);
-        }
-
-        [Test]
-        public void GivenPlayerAHasFourPointsAndPlayerBHasFourPoints_ReturnsDeuce()
-        {
-            var scoreCounter = new ScoreStub(4, 4);
-            var scoringEngine = new ScoringEngine(scoreCounter);
-
-            string score = scoringEngine.Score;
-
-            Assert.AreEqual("deuce", score);
-        }
-
-        [Test]
-        public void GivenPlayerAHasFourPointsAndPlayerBHasThreePoints_ReturnsAdvantagePlayerA()
-        {
-            var scoreCounter = new ScoreStub(4, 3);
-            var scoringEngine = new ScoringEngine(scoreCounter);
-
-            string score = scoringEngine.Score;
-
-            Assert.AreEqual("Advantage PlayerA", score);
-        }
-
-        [Test]
-        public void GivenPlayerAHasFivePointsAndPlayerBHasFourPoints_ReturnsAdvantagePlayerA()
-        {
-            var scoreCounter = new ScoreStub(5, 4);
-            var scoringEngine = new ScoringEngine(scoreCounter);
-
-            string score = scoringEngine.Score;
-
-            Assert.AreEqual("Advantage PlayerA", score);
-        }
     }
 
     public class ScoringEngine
@@ -111,15 +108,17 @@ namespace Dojo
         {
             get
             {
-                if (_scoreCounter.PointsA - _scoreCounter.PointsB ==1 && _scoreCounter.PointsB >= 3)
+                if (_scoreCounter.PointsA >= 3 && _scoreCounter.PointsB >= 3)
                 {
-                    return "Advantage PlayerA";
-                }
+                    if (_scoreCounter.PointsA == _scoreCounter.PointsB)
+                    {
+                        return "deuce";
+                    }
 
-                if (_scoreCounter.PointsA == _scoreCounter.PointsB
-                    && _scoreCounter.PointsA >= 3)
-                {
-                    return "deuce";
+                    if (_scoreCounter.PointsA - _scoreCounter.PointsB == 1)
+                    {
+                        return "Advantage PlayerA";
+                    }
                 }
 
                 string scorePhraseA = GetScorePhrase(_scoreCounter.PointsA);
