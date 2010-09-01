@@ -51,6 +51,17 @@ namespace Dojo
         }
 
         [Test]
+        public void GivenPlayerAHasFourPointsAndPlayerBHasZeroPoints_ReturnsPlayerAWins()
+        {
+            var scoreCounter = new ScoreStub(4, 0);
+            var scoringEngine = new ScoringEngine(scoreCounter);
+
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual("PlayerA wins", score);
+        }
+
+        [Test]
         public void GivenPlayerAHasFourPointsAndPlayerBHasFourPoints_ReturnsDeuce()
         {
             var scoreCounter = new ScoreStub(4, 4);
