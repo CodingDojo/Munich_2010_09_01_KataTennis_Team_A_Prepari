@@ -169,17 +169,15 @@ namespace Dojo
                         return "Advantage PlayerB";
                     }    
                     
- 
-                }
-
-                if (_scoreCounter.PointsB - _scoreCounter.PointsA == 2)
-                {
-                    return "PlayerB wins";
-                }
-
-                if (_scoreCounter.PointsA - _scoreCounter.PointsB == 2)
-                {
-                    return "PlayerA wins";
+                    if (_scoreCounter.PointsB - _scoreCounter.PointsA == 2)
+                    {
+                        return "PlayerB wins";
+                    } 
+                    
+                    if (_scoreCounter.PointsA - _scoreCounter.PointsB == 2)
+                    {
+                        return "PlayerA wins";
+                    }
                 }
 
                 string scorePhraseA = GetScorePhrase(_scoreCounter.PointsA);
