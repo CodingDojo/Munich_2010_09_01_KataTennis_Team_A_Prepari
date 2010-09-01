@@ -58,5 +58,16 @@ namespace Dojo
 
             Assert.AreEqual(1, scoreCounter.PointsB);
         }
+
+        [Test]
+        public void GivenAScoreCounterWherePlayerAHasOnePoint_AndPlayerAScore_PlayerAHasTwoPoints()
+        {
+            var scoreCounter = new ScoreCounter();
+            scoreCounter.ScoreA();
+
+            scoreCounter.ScoreA();
+
+            Assert.AreEqual(2, scoreCounter.PointsA);
+        }
     }
 }
