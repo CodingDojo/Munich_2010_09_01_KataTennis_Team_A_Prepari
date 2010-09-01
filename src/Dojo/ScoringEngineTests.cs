@@ -86,7 +86,7 @@ namespace Dojo
         {
             get
             {
-                if (_scoreCounter.PointsA == 3 && _scoreCounter.PointsB == 3)
+                if (_scoreCounter.PointsA == _scoreCounter.PointsB  && _scoreCounter.PointsA >= 3)
                 {
                     return "deuce";
                 }
