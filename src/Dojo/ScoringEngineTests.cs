@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 
 namespace Dojo
@@ -78,9 +79,9 @@ namespace Dojo
                     return "thirty";
                 case 3:
                     return "fourty";
+                default:
+                    throw new ArgumentException("Undefinied points");
             }
-
-            return null;
         }
     }
 }
