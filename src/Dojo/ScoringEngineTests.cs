@@ -6,6 +6,8 @@ namespace Dojo
     [TestFixture]
     public class ScoringEngineTests
     {
+
+
         [Test]
         public void GivenPlayerAHasOnePointAndPlayerBHasZeroPoints_ReturnsFifteenLove()
         {
@@ -15,17 +17,6 @@ namespace Dojo
             string score = scoringEngine.Score;
 
             Assert.AreEqual("fifteen-love", score);
-        }
-
-        [Test]
-        public void GivenPlayerAHasTwoPointsAndPlayerBHasZeroPoints_ReturnsThirtyLove()
-        {
-            var scoreCounter = new ScoreStub(2, 0);
-            var scoringEngine = new ScoringEngine(scoreCounter);
-
-            string score = scoringEngine.Score;
-
-            Assert.AreEqual("thirty-love", score);
         }
 
         [Test]
@@ -40,6 +31,17 @@ namespace Dojo
         }
 
         [Test]
+        public void GivenPlayerAHasTwoPointsAndPlayerBHasZeroPoints_ReturnsThirtyLove()
+        {
+            var scoreCounter = new ScoreStub(2, 0);
+            var scoringEngine = new ScoringEngine(scoreCounter);
+
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual("thirty-love", score);
+        }
+
+        [Test]
         public void GivenPlayerAHasZeroPointsAndPlayerBHasOnePoints_ReturnsLoveFifteen()
         {
             var scoreCounter = new ScoreStub(0, 1);
@@ -49,6 +51,7 @@ namespace Dojo
 
             Assert.AreEqual("love-fifteen", score);
         }
+
 
         [Test]
         public void GivenPlayerAHasThreePointsAndPlayerBHasThreePoints_ReturnsDeuce()
@@ -71,6 +74,17 @@ namespace Dojo
 
             Assert.AreEqual("deuce", score);
         }
+
+        [Test]
+        public void GivenPlayerAHasFourPointsAndPlayerBHasThreePoints_ReturnsAdvantagePlayerA()
+        {
+            var scoreCounter = new ScoreStub(4, 3);
+            var scoringEngine = new ScoringEngine(scoreCounter);
+
+            string score = scoringEngine.Score;
+
+            Assert.AreEqual("Advantage PlayerA", score);
+        }
     }
 
     public class ScoringEngine
@@ -86,7 +100,8 @@ namespace Dojo
         {
             get
             {
-                if (_scoreCounter.PointsA == _scoreCounter.PointsB  && _scoreCounter.PointsA >= 3)
+                if (_scoreCounter.PointsA == _scoreCounter.PointsB
+                    && _scoreCounter.PointsA >= 3)
                 {
                     return "deuce";
                 }
