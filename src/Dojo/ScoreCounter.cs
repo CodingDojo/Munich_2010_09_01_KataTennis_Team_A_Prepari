@@ -5,13 +5,18 @@ namespace Dojo
 {
     public class ScoreCounter
     {
-        public int PointsA { get; set; }
+        public int PointsA { get; private set; }
 
-        public int PointsB { get; set; }
+        public int PointsB { get; private set; }
 
         public void ScoreA()
         {
             PointsA++;
+        }
+
+        public void ScoreB()
+        {
+            PointsB++;
         }
     }
 
@@ -42,6 +47,16 @@ namespace Dojo
             scoreCounter.ScoreA();
 
             Assert.AreEqual(1, scoreCounter.PointsA);
+        }
+
+        [Test]
+        public void GivenANewlyCreatedScoreCounter_AndPlayerBScores_PlayerBHasOnePoint()
+        {
+            var scoreCounter = new ScoreCounter();
+
+            scoreCounter.ScoreB();
+
+            Assert.AreEqual(1, scoreCounter.PointsB);
         }
     }
 }
